@@ -1,0 +1,1 @@
+2026-09-14T10:44:10Z | Patched | (n/a) | no issues found: Pages built OK, all 10 assets 200, no mixed content, no egress calls outside js/lib, no workflows present (expected), all relative paths resolve
