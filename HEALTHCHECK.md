@@ -17,4 +17,4 @@
 2026-09-14T19:00:05Z | Patched | site-wide | no issues found
 2026-09-14T19:31:02Z | Patched | site-wide | no issues found
 2026-09-14T20:02:08Z | Patched | site-wide | no issues found
-2026-09-14T20:33:09Z | Patched | (n/a) | no issues found
+2026-09-14T20:33:09Z | Active | (n/a) | no issues found
