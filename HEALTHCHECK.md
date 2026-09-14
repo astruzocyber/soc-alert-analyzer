@@ -19,3 +19,4 @@
 2026-09-14T20:02:08Z | Patched | site-wide | no issues found
 2026-09-14T20:33:09Z | Active | (n/a) | no issues found
 2026-09-14T21:04:15Z | Active | site-wide | no issues found
+2026-09-14T21:35:15Z | Active | https://astruzocyber.github.io/soc-alert-analyzer/ | no issues found - Pages built OK, all 12 assets 200, no mixed content, no fetch/XHR/WebSocket/sendBeacon egress outside js/lib, no workflows present (expected), all local asset paths exist
