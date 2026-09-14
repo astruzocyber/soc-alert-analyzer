@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SOC Alert Analyzer (client-side, offline)</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header>
+  <h1>SOC Alert Analyzer</h1>
+  <p class="subtitle">
+    Runs entirely in your browser. Your CSV files are never uploaded or transmitted anywhere.
+    See <a href="SECURITY.md">SECURITY.md</a> for the full data handling model and how to verify it yourself.
+  </p>
+</header>
+
+<main>
+  <section id="upload-section">
+    <div id="drop-zone">
+      <p><strong>Drop one or more Sumo Logic export CSV files here</strong></p>
+      <p>or click to choose files. Any number of files is supported.</p>
+      <input type="file" id="file-input" accept=".csv" multiple hidden />
+    </div>
+    <ul id="file-list"></ul>
+    <button id="process-btn" disabled>Process files</button>
+  </section>
+
+  <section id="progress-wrap" class="hidden">
+    <div id="progress-label"></div>
+    <div class="progress-track"><div id="progress-bar"></div></div>
+  </section>
+
+  <section id="conflicts" class="hidden"></section>
+
+  <section id="reconciliation" class="hidden"></section>
+
+  <div id="error-banner" class="hidden"></div>
+
+  <section id="stats"></section>
+
+  <section id="download-section">
+    <button id="download-btn" disabled>Download .xlsx workbook</button>
+    <p class="note">The download button only enables once the reconciliation check passes and no em dashes
+      are present in the generated text.</p>
+  </section>
+</main>
+
+<footer>
+  <p>No data leaves this browser tab. See <a href="README.md">README.md</a> for alert type coverage and how
+    to graduate a new alert type from the generic fallback.</p>
+</footer>
+
+<script src="js/lib/papaparse.min.js"></script>
+<script src="js/lib/exceljs.min.js"></script>
+<script src="js/parse.js"></script>
+<script src="js/extractors.js"></script>
+<script src="js/classify.js"></script>
+<script src="js/matrix_data.js"></script>
+<script src="js/pipeline.js"></script>
+<script src="js/xlsx.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
