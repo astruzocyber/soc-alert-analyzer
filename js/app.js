@@ -94,7 +94,8 @@
     conflictsEl.classList.remove("hidden");
     conflictsEl.innerHTML = "<h3>Timestamp overlap conflicts: choose how to handle each pair</h3>" +
       "<p>These file pairs report the same alert type over an overlapping time window. Merging them " +
-      "automatically would double count events. Pick a resolution for each pair before generating the workbook.</p>";
+      "automatically would double count events. Pick a resolution for each pair below; the workbook " +
+      "will be built automatically once every conflict has a resolution selected.</p>";
     const list = document.createElement("div");
     for (const c of conflicts) {
       const key = conflictKey(c);
@@ -116,7 +117,23 @@
       select.addEventListener("change", () => {
         if (select.value) resolutions.set(key, select.value);
         else resolutions.delete(key);
-        updateProcessAvailability(conflicts);
+        const allResolved = conflicts.every((c) => resolutions.has(conflictKey(c)));
+        if (!allResolved) {
+          downloadBtn.disabled = true;
+          showError("Resolve every timestamp overlap conflict above before generating the workbook.");
+          return;
+        }
+        errorBanner.classList.add("hidden");
+        // Every conflict now has a resolution: automatically re-run the
+        // pipeline with those resolutions applied. This is only triggered
+        // here, from direct user interaction with a resolution dropdown,
+        // never from renderConflicts' own internal bookkeeping call below,
+        // so a re-render of an already-resolved conflict list can never
+        // recursively trigger another run.
+        runPipeline().catch((err) => {
+          showError(`Processing error: ${err.message}`);
+          console.error(err);
+        });
       });
       box.appendChild(select);
       list.appendChild(box);

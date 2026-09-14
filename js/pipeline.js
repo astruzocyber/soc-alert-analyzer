@@ -35,10 +35,31 @@
   // check every pair of files that contain that subject for an overlapping
   // Time Range window. Returns a list of conflicts:
   // { subject, fileA, fileB, windowA, windowB }
+  // Native Date.parse() is implementation-defined for anything that is not
+  // ISO-8601 and is unreliable across browsers for Sumo Logic's timestamp
+  // formats (which commonly include a trailing timezone abbreviation like
+  // "EDT" that Date.parse cannot handle, or a "MM/DD/YYYY hh:mm:ss AM" US
+  // format). Try, in order: as-is, with a trailing alphabetic timezone
+  // abbreviation stripped, and with common separators normalized. Only
+  // fall back to "unparseable" (treated conservatively as a possible
+  // overlap) if none of these succeed.
   function tryParseDate(s) {
     if (!s) return null;
-    const t = Date.parse(s);
-    return isNaN(t) ? null : t;
+    const raw = s.trim();
+    const attempts = [raw];
+    // Strip a trailing timezone abbreviation, e.g. "... 05:00:00 PM EDT"
+    // or "...T17:00:00 UTC" -> "... 05:00:00 PM" / "...T17:00:00".
+    const tzStripped = raw.replace(/\s+[A-Z]{2,5}$/, "");
+    if (tzStripped !== raw) attempts.push(tzStripped);
+    // Normalize "YYYY-MM-DD HH:MM:SS" (space separator, no timezone) to
+    // ISO with a "T", which every engine parses consistently.
+    const isoLike = tzStripped.match(/^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2})$/);
+    if (isoLike) attempts.push(`${isoLike[1]}T${isoLike[2]}`);
+    for (const a of attempts) {
+      const t = Date.parse(a);
+      if (!isNaN(t)) return t;
+    }
+    return null;
   }
 
   function collectWindows(emails, subject) {
