@@ -46,4 +46,4 @@
 2026-09-15T20:02:14Z | Active | site-wide | no issues found
 2026-09-15T20:33:03Z | Patched | all | no issues found
 2026-09-15T21:04:04Z | Active | site-wide | no issues found (pages built, 11/11 assets 200, no mixed content, no egress calls, no broken paths, no workflows)
-2026-09-15T21:35:16Z | Patched | N/A | no issues found
+2026-09-15T21:35:16Z | Active | N/A | no issues found
