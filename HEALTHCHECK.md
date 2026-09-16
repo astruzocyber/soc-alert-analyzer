@@ -81,3 +81,4 @@
 2026-09-16T14:09:17Z | Patched | (none) | no issues found - Pages built OK, all 10 assets 200, no mixed-content (http:// hits are only XML namespace URIs inside vendored exceljs.min.js, not network refs), no egress calls outside js/lib, no workflows present (expected, classic Pages), all relative paths resolve
 2026-09-16T14:40:19Z | Active | site-wide | no issues found
 2026-09-16T15:11:19Z | Active | astruzocyber.github.io/soc-alert-analyzer/ | no issues found: pages built ok, all 10 assets 200, no mixed content, no egress calls outside js/lib, no broken relative paths, no workflows dir (expected)
+2026-09-16T15:42:19Z | Patched | (site-wide) | no issues found
