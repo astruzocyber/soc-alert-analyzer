@@ -72,3 +72,4 @@
 2026-09-16T09:28:20Z | Patched | site-wide | no issues found
 2026-09-16T10:00:51Z | Patched | site-wide | no issues found
 2026-09-16T10:32:20Z | Patched or Active | site-wide | no issues found - Pages built, all assets 200, no mixed content, no new fetch/XHR/WS/sendBeacon outside js/lib, no workflows dir (expected), all relative paths valid
+2026-09-16T11:03:22Z | Active | site-wide | no issues found - Pages built, all assets 200, no mixed content (exceljs OOXML namespace strings are non-network string literals, known non-issue), no new fetch/XHR/WS/sendBeacon outside js/lib, no workflows dir (expected), all relative paths valid
