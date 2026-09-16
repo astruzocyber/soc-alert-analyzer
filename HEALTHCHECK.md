@@ -79,3 +79,4 @@
 2026-09-16T13:07:17Z | Active | site-wide | no issues found
 2026-09-16T13:38:21Z | Patched | (n/a) | no issues found — Pages built OK, all 11 assets 200, no mixed content (exceljs http:// hits are XML namespace URIs, not fetched resources), no egress calls outside js/lib, no workflows dir (expected), all relative paths resolve
 2026-09-16T14:09:17Z | Patched | (none) | no issues found - Pages built OK, all 10 assets 200, no mixed-content (http:// hits are only XML namespace URIs inside vendored exceljs.min.js, not network refs), no egress calls outside js/lib, no workflows present (expected, classic Pages), all relative paths resolve
+2026-09-16T14:40:19Z | Active | site-wide | no issues found
